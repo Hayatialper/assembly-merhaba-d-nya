@@ -1,0 +1,20 @@
+---------------------------------------------------------------------
+name Merhabadunya
+
+.data
+    msg db "Merhaba Dunya"
+    msg_len equ $ - msg
+    
+    
+.code
+    start:
+    mov ah,4 ; AH kaydina yazdirma BIOS fonksiyonu ile atama
+    mov dx, offset msg ; DX kaydina msg'nin yani string'in adresi atanir.
+    mov cx, offset msg_len ;CX kaydina offset ile (yani bir verinin start'a gore konumu) msg_len ifadesinin adresini atama
+    int 21H ;INT 21h ile AH kaydina atadigimiz veriyi calistirir. Kesme olarakta gecer.
+    mov ah,1 ; AH kaydina "exit" yada cikis fonksiyonuna atiyoruz.
+    ;simdi ise bunu calistimak icin:
+    int 21H
+    
+end start ; Fonksiyonu sonlandiriyoruz.
+---------------------------------------------------------------------
